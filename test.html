@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: "Lato", sans-serif;}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 33%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+#國旗 {background-color:rgb(0, 255, 255);}
+#國名 {background-color:green;}
+#軍事 {background-color:blue;}
+
+</style>
+</head>
+<body>
+
+<p>美國</p>
+
+<div id="國旗" class="tabcontent">
+  <h1>國旗</h1>
+  <img src="img/下載.png">
+</div>
+
+<div id="國名" class="tabcontent">
+  <h1>國名</h1>
+  <p>「The United States」是對美國最傳統最正式的稱呼</p> 
+</div>
+
+<div id="軍事" class="tabcontent">
+  <h1>軍事</h1>
+  <p>美軍的陸海空軍規模一直位於世界前列</p>
+</div>
+
+
+
+<button class="tablink" onclick="openCity('國旗', this, 'rgb(0, 255, 255)')" id="defaultOpen">國旗</button>
+<button class="tablink" onclick="openCity('國名', this, 'green')">國名</button>
+<button class="tablink" onclick="openCity('軍事', this, 'blue')">軍事</button>
+
+<script>
+function openCity(cityName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(cityName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 

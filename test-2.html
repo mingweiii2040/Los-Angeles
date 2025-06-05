@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>洛杉磯旅遊網</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .carousel-image {
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 text-lg">
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-4xl font-bold mb-8">洛杉磯旅遊網</h1>
+
+    <!-- Slideshow / Carousel -->
+    <div class="relative mb-8">
+      <div class="overflow-hidden rounded-2xl">
+        <img id="carouselImage" src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Los_Angeles_Montage_2016.png"
+             alt="Los Angeles" class="w-full h-72 object-cover carousel-image">
+      </div>
+      <!-- Left Arrow -->
+      <button id="prevBtn" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100">
+        ◀
+      </button>
+      <!-- Right Arrow -->
+      <button id="nextBtn" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white p-2 rounded-full shadow hover:bg-gray-100">
+        ▶
+      </button>
+    </div>
+
+    <!-- Tabs -->
+    <div>
+      <div class="flex space-x-6 border-b mb-6">
+        <button class="tab-button text-blue-600 border-b-4 border-blue-600 pb-3 text-xl font-semibold" data-tab="intro">城市介紹</button>
+        <button class="tab-button text-gray-600 hover:text-blue-600 pb-3 text-xl font-semibold" data-tab="attractions">熱門景點</button>
+        <button class="tab-button text-gray-600 hover:text-blue-600 pb-3 text-xl font-semibold" data-tab="food">美食推薦</button>
+      </div>
+
+      <!-- Tab Contents -->
+      <div id="intro" class="tab-content">
+        <h2 class="text-2xl font-semibold mb-4">關於洛杉磯</h2>
+        <h1 ><a href="https://zh.wikipedia.org/zh-tw/%E6%B4%9B%E6%9D%89%E7%9F%B6" target="_blank">洛杉磯</a></h1> 
+        <p>洛杉磯（Los Angeles，簡稱 LA）是美國加州最大的城市，也是全美第二大城市，位於太平洋沿岸，擁有迷人的海灘、壯麗的山景和全年陽光普照的氣候。這座城市以多元文化著稱，是世界娛樂產業的中心，特別是好萊塢電影產業的發源地。</p>
+      </div>
+      <div id="attractions" class="tab-content hidden">
+        <h2 class="text-2xl font-semibold mb-4">熱門景點</h2>
+        <ul class="list-disc list-inside space-y-1">
+          <li>好萊塢星光大道</li>
+          <li>格里菲斯天文台</li>
+          <li>環球影城</li>
+          <li>聖塔莫尼卡海灘</li>
+        </ul>
+      </div>
+      <div id="food" class="tab-content hidden">
+        <h2 class="text-2xl font-semibold mb-4">美食推薦</h2>
+        <p>洛杉磯有各式各樣的美食選擇，從墨西哥捲餅到韓式烤肉應有盡有。推薦試試 In-N-Out 漢堡或參觀 Grand Central Market！</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Carousel Logic
+    const images = [
+      
+    ];
+
+    let current = 0;
+    const imgElement = document.getElementById("carouselImage");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    function showImage(index) {
+      imgElement.style.opacity = 0;
+      setTimeout(() => {
+        imgElement.src = images[index];
+        imgElement.style.opacity = 1;
+      }, 300);
+    }
+
+    nextBtn.addEventListener("click", () => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    });
+
+    setInterval(() => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }, 5000);
+
+    // Tab Logic
+    const tabs = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('text-blue-600', 'border-b-4', 'border-blue-600'));
+        tab.classList.add('text-blue-600', 'border-b-4', 'border-blue-600');
+
+        const target = tab.dataset.tab;
+        contents.forEach(content => content.classList.add('hidden'));
+        document.getElementById(target).classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

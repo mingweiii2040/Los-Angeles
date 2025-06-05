@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>洛杉磯旅遊網</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background-image: url('images/la-bg.png'); 
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .carousel-image {
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body class="text-gray-800 text-lg backdrop-blur-sm bg-white/60">
+  <div class="max-w-4xl mx-auto p-6">
+    <h1 class="text-4xl font-bold mb-8 text-center">洛杉磯旅遊網</h1>
+
+    <!-- Slideshow -->
+    <div class="relative mb-8">
+      <div class="overflow-hidden rounded-2xl shadow-lg">
+        <img id="carouselImage"
+             src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Los_Angeles_Montage_2016.png"
+             alt="Los Angeles" class="w-full h-72 object-cover carousel-image">
+      </div>
+      <!-- Arrows -->
+      <button id="prevBtn" class="absolute top-1/2 left-2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-gray-200">
+        ◀
+      </button>
+      <button id="nextBtn" class="absolute top-1/2 right-2 -translate-y-1/2 bg-white/80 p-2 rounded-full shadow hover:bg-gray-200">
+        ▶
+      </button>
+    </div>
+  </div>
+    <!-- Tabs -->
+    <div>
+      <div class="flex space-x-6 border-b mb-6 justify-center">
+        <button class="tab-button text-blue-600 border-b-4 border-blue-600 pb-2 text-xl font-semibold" data-tab="intro">城市介紹</button>
+        <button class="tab-button text-gray-600 hover:text-blue-600 pb-2 text-xl font-semibold" data-tab="attractions">熱門景點</button>
+        <button class="tab-button text-gray-600 hover:text-blue-600 pb-2 text-xl font-semibold" data-tab="food">美食推薦</button>
+      </div>
+      <!-- Tab Content -->
+      <div id="intro" class="tab-content">
+        <h2 class="text-2xl font-semibold mb-4">關於洛杉磯</h2>
+        <p>洛杉磯（Los Angeles，簡稱 LA）是美國加州最大、全美第二大城市，位於美國西岸太平洋沿岸，以其多元文化、陽光沙灘與娛樂產業聞名全球。
+這裡是好萊塢的故鄉，是電影與音樂夢想的起點，也是全球數位、創意與科技發展的重要據點。從壯麗的山脈、城市天際線，到蔚藍海灘，洛杉磯完美結合了自然與都市的魅力。
+除了娛樂業，洛杉磯還擁有世界級的博物館、美術館、主題樂園，以及豐富的國際美食文化，是一座活力無限、永不無聊的城市。
+</p>
+        <!-- 嵌入 Google 地圖 -->
+<div class="mb-6">
+  <h3 class="text-xl font-semibold mb-2">📍 城市位置</h3>
+  <iframe
+    class="w-full rounded-xl shadow-lg"
+    height="300"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d423286.2743192455!2d-118.69193056186554!3d34.02016129980338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2c7c6edc3aeb1%3A0x90765f35b9aa96e0!2z5qGD5ZyL5bGx!5e0!3m2!1szh-TW!2stw!4v1717584055000!5m2!1szh-TW!2stw">
+ </iframe>
+ </div>
+ </div>
+ </div>
+ 
+      <div id="attractions" class="tab-content hidden">
+        <h2 class="text-2xl font-semibold mb-4">熱門景點</h2>
+        <ul class="list-disc list-inside space-y-2">
+          <li>格里菲斯公園（Griffith Park）
+洛杉磯最大的城市公園，擁有登山步道、觀星中心與格里菲斯天文台，可俯瞰市區與好萊塢標誌。</li>
+          <li>格里菲斯天文台</li>
+          <li>環球影城</li>
+          <li>聖塔莫尼卡海灘</li>
+        </ul>
+      </div>
+      <div id="food" class="tab-content hidden">
+        <h2 class="text-2xl font-semibold mb-4">美食推薦</h2>
+        <p>從墨西哥捲餅到韓式烤肉，洛杉磯是一座多元美食天堂。推薦必吃：In-N-Out 漢堡、Grand Central Market、K-town 韓式料理。</p>
+      </div>
+
+  <script>
+    // Carousel logic
+    const images = [
+      "https://www.agoda.com/wp-content/uploads/2024/02/Featured-image-Los-Angeles-during-sunset-1244x700.jpg",
+      "https://www.hsinfei.com/wp-content/uploads/2024/07/%E6%B4%9B%E6%9D%89%E7%A3%AF%E6%99%AF%E9%BB%9E-%E5%A5%BD%E8%90%8A%E5%A1%A2.jpg",
+      "https://blog-static.kkday.com/zh-tw/blog/wp-content/uploads/2023/01/US_Los-Angeles_Ashutterstock_384845107%E6%8B%B7%E8%B2%9D.jpg"
+    ];
+    let current = 0;
+    const imgElement = document.getElementById("carouselImage");
+    const nextBtn = document.getElementById("nextBtn");
+    const prevBtn = document.getElementById("prevBtn");
+
+    function showImage(index) {
+      imgElement.style.opacity = 0;
+      setTimeout(() => {
+        imgElement.src = images[index];
+        imgElement.style.opacity = 1;
+      }, 300);
+    }
+
+    nextBtn.addEventListener("click", () => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    });
+
+    prevBtn.addEventListener("click", () => {
+      current = (current - 1 + images.length) % images.length;
+      showImage(current);
+    });
+
+    setInterval(() => {
+      current = (current + 1) % images.length;
+      showImage(current);
+    }, 5000);
+
+    // Tabs
+    const tabs = document.querySelectorAll('.tab-button');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => t.classList.remove('text-blue-600', 'border-b-4', 'border-blue-600'));
+        tab.classList.add('text-blue-600', 'border-b-4', 'border-blue-600');
+        const target = tab.dataset.tab;
+        contents.forEach(content => content.classList.add('hidden'));
+        document.getElementById(target).classList.remove('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
