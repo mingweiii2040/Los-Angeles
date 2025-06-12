@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>洛杉磯旅遊網</title>
+  <link rel="styles" href="styles.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -17,7 +18,7 @@
 </head>
 <body class="text-gray-800 text-lg backdrop-blur-sm bg-white/60">
   <div class="max-w-4xl mx-auto p-6">
-    <h1 class="text-4xl font-bold mb-8 text-center">洛杉磯旅遊網</h1>
+    <h1 class="text-4xl font-bold mb-8 text-center">洛杉磯介紹</h1>
 
     <!-- Slideshow -->
     <div class="relative mb-8">
@@ -40,7 +41,7 @@
       <div class="flex space-x-6 border-b mb-6 justify-center">
         <button class="tab-button text-blue-600 border-b-4 border-blue-600 pb-2 text-xl font-semibold" data-tab="intro">城市介紹</button>
         <button class="tab-button text-gray-600 hover:text-blue-600 pb-2 text-xl font-semibold" data-tab="attractions">熱門景點</button>
-        <button class="tab-button text-gray-600 hover:text-blue-600 pb-2 text-xl font-semibold" data-tab="food">美食推薦</button>
+        <button class="tab-button text-gray-600 hover:text-blue-600 pb-2 text-xl font-semibold" data-tab="art">藝術與文化</button>
       </div>
       <!-- Tab Content -->
       <div id="intro" class="tab-content">
@@ -68,7 +69,7 @@
         <h2 class="text-2xl font-semibold mb-4">熱門景點</h2>
         <ul class="list-disc list-inside space-y-2">
           <li>格里菲斯公園（Griffith Park）
-洛杉磯最大的城市公園，擁有登山步道、觀星中心與格里菲斯天文台，可俯瞰市區與好萊塢標誌。</li>
+             洛杉磯最大的城市公園，擁有登山步道、觀星中心與格里菲斯天文台，可俯瞰市區與好萊塢標誌。</li>
           <li>格里菲斯天文台（Griffith Observatory）
             觀景視野極佳，可俯瞰整個洛杉磯與好萊塢標誌，夜晚觀星更是浪漫首選。</li>
           <li>環球影城（Universal Studios Hollywood）
@@ -76,10 +77,19 @@
           <li>聖塔莫尼卡碼頭（Santa Monica Pier）
             百年歷史的木造碼頭，有摩天輪、街頭藝人與美麗的夕陽，是旅人心中的經典地標。</li>
         </ul>
+
       </div>
-      <div id="food" class="tab-content hidden">
-        <h2 class="text-2xl font-semibold mb-4">美食推薦</h2>
-        <p>從墨西哥捲餅到韓式烤肉，洛杉磯是一座多元美食天堂。推薦必吃：In-N-Out 漢堡、Grand Central Market、K-town 韓式料理。</p>
+      <div id="art" class="tab-content">
+        <h2 class="text-2xl font-semibold mb-4">藝術與文化</h2>
+        <li>好萊塢（Hollywood）：全球電影與電視產業的象徵。</li>
+          <li>蓋蒂中心（The Getty Center）：免費入場的世界級博物館，展示歐洲繪畫、雕塑與園藝設計。</li>
+          <li>洛杉磯郡藝術博物館（LACMA）：美西最大的藝術博物館，館藏跨越多個時代與文化。</li>
+          <li>洛杉磯是一個種族與文化的大熔爐，擁有：
+            小東京（Little Tokyo）
+            韓城（Koreatown）         
+            墨西哥區（El Pueblo / Olvera Street）          
+            小亞美尼亞（Little Armenia）         
+            泰國城（Thai Town）</li>
       </div>
 
   <script>
